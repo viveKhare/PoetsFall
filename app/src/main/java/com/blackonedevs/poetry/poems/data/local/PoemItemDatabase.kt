@@ -8,7 +8,7 @@ import com.blackonedevs.poetry.poems.data.local.entity.PoemItemEntity
 
 @Database(
     entities =
-    [PoemItemEntity::class], version = 1
+    [PoemItemEntity::class], version = 1, exportSchema = false
 )
 abstract class PoemItemDatabase : RoomDatabase() {
     abstract val dao:PoemItemDao
