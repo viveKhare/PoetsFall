@@ -8,8 +8,8 @@ plugins {
 
 android {
     compileSdk 32
-    lint {
-        baseline = file("lint-baseline.xml")
+    lintOptions {
+        abortOnError false
     }
     defaultConfig {
         applicationId "com.blackonedevs.composepoetry"
