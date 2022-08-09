@@ -1,8 +1,11 @@
 package com.blackonedevs.poetry.poems.presentation
 
 import android.os.Bundle
+import android.view.animation.OvershootInterpolator
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -21,8 +24,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -34,10 +39,13 @@ import com.blackonedevs.poetry.poems.theme.ComposePoetryTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
+import com.blackonedevs.poetry.R
 import com.blackonedevs.poetry.poems.core.Constant
 import com.blackonedevs.poetry.poems.core.TestTags
 import com.blackonedevs.poetry.poems.domain.model.PoemItem
 import com.blackonedevs.poetry.poems.presentation.PoemItemState
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -111,7 +119,6 @@ class PoemsListScreen : ComponentActivity() {
 
 
 }
-
 @Composable
 private fun setupListItems(state: PoemItemState) {
     LazyColumn(modifier = Modifier.fillMaxSize()) {
